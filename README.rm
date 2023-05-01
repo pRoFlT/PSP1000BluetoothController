@@ -1,0 +1,21 @@
+# PSP1000BluetoothController
+PSP 1000 serial port application to configure a Bluetooth audio transmitter
+
+---Current source is not compiling the user code with the PRX file created. Placing here for external help---
+
+There are two main folders in this. Kernel and User.
+kernel is the PRX source needed to enable kernel control over the PSP
+
+user is the source for the main application.
+
+In order to make the kernel PRX you will need to run MAKE and then run "psp-build-exports -s pspuartprx.exp" in order to create pspuartprx.S file
+
+The pspuartprx.prx and pspuartprx.S file needs to be copied to the user folder.
+
+Then run make in user folder to compile the code with the PRX
+
+This should create a EBOOT.PBP
+
+copy EBOOT.PBP and pspuartprx.prx to your psp GAME/<name> for your application. And you should be good to go.
+  
+  
