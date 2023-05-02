@@ -9,8 +9,8 @@
 #include "pspuartprx.h"
 
 PSP_MODULE_INFO("pspuartprx", 0x1006, 1, 1);
-PSP_MAIN_THREAD_ATTR(0);
-// PSP_NO_CREATE_MAIN_THREAD(); // sample online code had it this way for PRX. so we may need to enable this.
+//PSP_MAIN_THREAD_ATTR(0);
+PSP_NO_CREATE_MAIN_THREAD(); // sample online code had it this way for PRX. so we may need to enable this.
 
 //
 // Memory addresses for the UART controller

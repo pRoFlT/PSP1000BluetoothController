@@ -19,7 +19,9 @@ int main(void)
 	sceDisplayWaitVblankStart();
 	sceCtrlSetSamplingCycle(0);
 	sceCtrlSetSamplingMode(PSP_CTRL_MODE_ANALOG);
-
+	pspDebugScreenInit();
+	pspDebugScreenPrintf("Atempting to load pspuart in kernel mode\n");
+	
 	SceUID mod = pspSdkLoadStartModule("pspuartprx.prx", PSP_MEMORY_PARTITION_KERNEL);
     if (mod < 0)
     {
