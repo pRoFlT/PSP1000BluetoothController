@@ -3,8 +3,8 @@ OBJS = main.o
 
 INCDIR =
 CFLAGS = -O2 -G0 -Wall
-CXXFLAGS = (CFLAGS) -fno-exceptions -fno-rtti
-ASFLAGS = (CFLAGS)
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS)
 
 BUILD_PRX = 1
 PRX_EXPORTS = pspuartprx.exp
