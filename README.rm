@@ -1,7 +1,7 @@
 # PSP1000BluetoothController
 PSP 1000 serial port application to configure a Bluetooth audio transmitter
 
----Current source is not compiling the user code with the PRX file created. Placing here for external help---
+---Current source is compiling the user code with the PRX file created. But it doesn't send any serial data out the PSP---
 
 There are two main folders in this. Kernel and User.
 kernel is the PRX source needed to enable kernel control over the PSP
@@ -9,9 +9,9 @@ kernel is the PRX source needed to enable kernel control over the PSP
 user is the source for the main application.
 
 In order to make the kernel PRX you will need to run MAKE and then run "psp-build-exports -s pspuartprx.exp" in order to create pspuartprx.S file
-*** Update: added pspuartprx.S build into kernel makefile. and it copies over both files to the user folder. Now if i can figure out how to have a makefile in the root folder build it all in one shot? ***
-
 The pspuartprx.prx and pspuartprx.S file needs to be copied to the user folder.
+
+*** Update: added pspuartprx.S build into kernel makefile. and it copies over both files to the user folder. Now if i can figure out how to have a makefile in the root folder build it all in one shot? ***
 
 Then run make in user folder to compile the code with the PRX
 
@@ -20,3 +20,4 @@ This should create a EBOOT.PBP
 copy EBOOT.PBP and pspuartprx.prx to your psp GAME/<name> for your application. And you should be good to go.
   
   
+Side note: with a scope connected to psp 1000 serial port TX line. i get high/low at every couple seconds when plugging into the port. Not sure if it is expected a response during the high side. might be atempting to act like a CTS/RTS lines?
