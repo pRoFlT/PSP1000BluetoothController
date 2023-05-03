@@ -9,6 +9,7 @@ kernel is the PRX source needed to enable kernel control over the PSP
 user is the source for the main application.
 
 In order to make the kernel PRX you will need to run MAKE and then run "psp-build-exports -s pspuartprx.exp" in order to create pspuartprx.S file
+*** Update: added pspuartprx.S build into kernel makefile. and it copies over both files to the user folder. Now if i can figure out how to have a makefile in the root folder build it all in one shot? ***
 
 The pspuartprx.prx and pspuartprx.S file needs to be copied to the user folder.
 
