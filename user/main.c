@@ -6,15 +6,30 @@
 #include <stdio.h>
 #include <string.h>
 #include "pspuartprx.h"
+#include "callback.h"
 
 PSP_MODULE_INFO("BluetoothController", 0, 1, 1);
 /* Define the main thread's attribute value (optional) */
 PSP_MAIN_THREAD_ATTR(PSP_THREAD_ATTR_USER);
 
-PSP_HEAP_SIZE_KB(2500); // if we want to make heap larger. we may need this for all the serial info
+
+// constants for bluetooth controller
+char inBytes[100];
+const char* cmd_AT = "AT+";
+const char* cmd_REST = "AT+REST";
+const char* cmd_GMR = "AT+GMR";
+const char* cmd_STATUS = "AT+STATUS";
+const char* cmd_DISCON = "AT+DISCON";
+const char* cmd_SCAN = "AT+SCAN";
+const char* cmd_ADDLINKADD = "AT+ADDLINKADD=0x"; // NOTE: must be exactly 12 characters for hex string
+const char* cmd_ADDLINKNAME = "AT+ADDLINKNAME=";
+const char* cmd_VMLINK = "AT+VMLINK?";
+const char* cmd_DELVMLINK = "AT+DELVMLINK";
+
 
 int main(void)
 {
+	setupExitCallback(); // callback for home button exit.
 	int baud=9600;
 	sceDisplayWaitVblankStart();
 	sceCtrlSetSamplingCycle(0);
@@ -37,7 +52,7 @@ int main(void)
 	pspDebugScreenPrintf("UP to send char\n");
 	pspDebugScreenPrintf("Down to read char\n");
 
-	while(1)
+	while(isRunning()) // get from callback function
 	{
 	SceCtrlData pad;
 
@@ -45,8 +60,8 @@ int main(void)
 		if(pad.Buttons & PSP_CTRL_UP) {
 				
 			pspDebugScreenPrintf("Sending single char A at baud rate:%d \n", baud);
-			pspUARTWrite(65);
-			sceKernelDelayThread(500000);
+			pspUARTPrint("Hello PSP World");
+			sceKernelDelayThread(50000);
 		}
 		if(pad.Buttons & PSP_CTRL_DOWN) {
 				
@@ -57,7 +72,7 @@ int main(void)
 			{
 					pspDebugScreenPrintf("%c", ch);
 			}
-			sceKernelDelayThread(500000);
+			sceKernelDelayThread(50000);
 		}
 		if(pad.Buttons & PSP_CTRL_CROSS)
 		{

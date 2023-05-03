@@ -1,5 +1,5 @@
 TARGET = BluetoothController
-OBJS = main.o pspuartprx.o
+OBJS = main.o pspuartprx.o callback.o
 
 #USE_PSPSDK_LIBC = 1
 

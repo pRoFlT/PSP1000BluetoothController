@@ -1,7 +1,7 @@
 // SIO PRX to send recieve data over PSP serial port
-// After Make run "psp-build-exports -s pspuartprx.exp" to get pspuartprx.s file.
-// This pspuartprx.s goes into your user code folder with pspuartprx.prx
-// pspuartprx.prx gets coppied with user EBOT.pbp into psp\game\gamenamefolder
+// After Make run "psp-build-exports -s pspuartprx.exp" to get pspuartprx.S file.
+// This pspuartprx.S goes into your user code folder with pspuartprx.prx
+// pspuartprx.prx gets coppied with user EBOOT.PBP into psp\GAME\<gamenamefolder>
 
 #include <pspsdk.h>
 #include <pspkernel.h>
@@ -11,6 +11,8 @@
 PSP_MODULE_INFO("pspuartprx", 0x1006, 1, 1);
 //PSP_MAIN_THREAD_ATTR(0);
 PSP_NO_CREATE_MAIN_THREAD(); // sample online code had it this way for PRX. so we may need to enable this.
+
+PSP_HEAP_SIZE_KB(2500); // if we want to make heap larger. we may need this for all the serial info
 
 //
 // Memory addresses for the UART controller
