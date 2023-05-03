@@ -24,4 +24,4 @@ Side note: with a scope connected to psp 1000 serial port TX line. i get high/lo
 
 
 Here is the chip i'm planning on using.
-![bluetooth chip](kcx_bt_emitter_v1_7.png)
+<img src="/kcx_bt_emitter_v1_7.png" alt="Bluetooth controller chip">
